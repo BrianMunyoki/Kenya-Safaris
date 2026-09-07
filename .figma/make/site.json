@@ -1,0 +1,10 @@
+{
+  "description": "Explore and book diverse safari experiences in Kenya, from luxury to group tours, tailored for adventure seekers and wildlife enthusiasts.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
