@@ -209,9 +209,9 @@ export default function Navigation() {
       <div className="bg-[#2a1a0e] text-[#c8b896] text-[11px] font-[Outfit] tracking-widest uppercase px-6 lg:px-10 py-2 flex justify-between items-center">
         <span>East Africa's Premier Safari Outfitter</span>
         <div className="hidden sm:flex gap-6 items-center">
-          <a href="tel:+254700000000" className="hover:text-[#e8b84b] transition-colors">+254 700 000 000</a>
+          <a href="tel:+254728515826" className="hover:text-[#e8b84b] transition-colors">+254 728 515 826</a>
           <span className="text-[#6b4226]">|</span>
-          <a href="mailto:info@safarico.ke" className="hover:text-[#e8b84b] transition-colors">info@safarico.ke</a>
+          <a href="mailto:info@kenyasavannah.com" className="hover:text-[#e8b84b] transition-colors">info@kenyasavannah.com</a>
         </div>
       </div>
 

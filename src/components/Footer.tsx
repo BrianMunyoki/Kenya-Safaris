@@ -98,14 +98,14 @@ export default function Footer() {
         <div className="border-t border-[#3d2b1a] pt-8 mb-8 flex flex-col sm:flex-row gap-6 sm:gap-12">
           <div>
             <p className="text-[10px] tracking-[0.2em] uppercase text-[#8b7355] font-[Outfit] font-[600] mb-1">Phone / WhatsApp</p>
-            <a href="tel:+254700000000" className="text-[14px] font-[Outfit] text-[#f5f0e8] hover:text-[#e8b84b] transition-colors">
-              +254 700 000 000
+            <a href="tel:+254728515826" className="text-[14px] font-[Outfit] text-[#f5f0e8] hover:text-[#e8b84b] transition-colors">
+              +254 728 515 826
             </a>
           </div>
           <div>
             <p className="text-[10px] tracking-[0.2em] uppercase text-[#8b7355] font-[Outfit] font-[600] mb-1">Email</p>
-            <a href="mailto:info@safarico.ke" className="text-[14px] font-[Outfit] text-[#f5f0e8] hover:text-[#e8b84b] transition-colors">
-              info@safarico.ke
+            <a href="mailto:info@kenyasavannah.com" className="text-[14px] font-[Outfit] text-[#f5f0e8] hover:text-[#e8b84b] transition-colors">
+              info@kenyasavannah.com
             </a>
           </div>
           <div>

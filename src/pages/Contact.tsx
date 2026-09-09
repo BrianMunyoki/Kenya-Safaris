@@ -78,8 +78,8 @@ export default function Contact() {
           <h2 className="text-2xl lg:text-3xl font-[Fraunces] font-[300] text-[#2a1a0e] mb-8" style={{ fontFamily: 'Fraunces, Georgia, serif' }}>Nairobi-based. Africa-wide.</h2>
           <div className="space-y-6 mb-10">
             {[
-              { label: 'Phone / WhatsApp', value: '+254 700 000 000', href: 'tel:+254700000000' },
-              { label: 'Email', value: 'info@safarico.ke', href: 'mailto:info@safarico.ke' },
+             { label: 'Phone / WhatsApp', value: '+254 728 515 826', href: 'tel:+254728515826' },
+              { label: 'Email', value: 'info@kenyasavannah.com', href: 'mailto:info@kenyasavannah.com' },
               { label: 'Office Hours', value: 'Mon–Fri 08:00–18:00 EAT | Sat 08:00–13:00', href: null },
               { label: 'Address', value: 'Karen, Nairobi, Kenya', href: null },
             ].map((item) => (
@@ -98,7 +98,7 @@ export default function Contact() {
             <p className="text-[14px] font-[Outfit] font-[300] text-[#6b4226] leading-relaxed mb-3">
               For guests currently on safari, our 24-hour operations line is available at all times.
             </p>
-            <p className="text-[16px] font-[Outfit] font-[500] text-[#a0522d]">+254 700 111 000</p>
+            <p className="text-[16px] font-[Outfit] font-[500] text-[#a0522d]">+254 728 515 826</p>
           </div>
         </div>
       </section>

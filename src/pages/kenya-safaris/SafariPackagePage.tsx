@@ -240,7 +240,7 @@ function genericPackage(pkg: string): PackageData {
     duration: 'Varies', price: 'On request', groupSize: 'Flexible', difficulty: 'Easy',
     highlights: ['Tailor-made itinerary', 'Professional guides', 'All inclusive options', 'Year-round departures'],
     overview: `Get in touch with our team to discuss your ${title} requirements. We\'ll design a bespoke itinerary around your dates, budget, and interests.`,
-    itinerary: [{ day: 'Step 1', title: 'Contact Us', desc: 'Fill in our trip planner or call us directly on +254 700 000 000.' }, { day: 'Step 2', title: 'Itinerary Design', desc: 'Our team designs a personalised quote within 24 hours.' }, { day: 'Step 3', title: 'Book & Travel', desc: 'Confirm your booking with a deposit and we handle everything else.' }],
+    itinerary: [{ day: 'Step 1', title: 'Contact Us', desc: 'Fill in our trip planner or call us directly on +254 728 515 826.' }, { day: 'Step 2', title: 'Itinerary Design', desc: 'Our team designs a personalised quote within 24 hours.' }, { day: 'Step 3', title: 'Book & Travel', desc: 'Confirm your booking with a deposit and we handle everything else.' }],
     includes: ['All items tailored to your package'],
     excludes: ['International flights', 'Travel insurance', 'Personal spending'],
     relatedLinks: [{ label: 'Plan My Trip', to: '/plan-my-trip' }, { label: 'Contact Us', to: '/contact' }],

@@ -55,14 +55,14 @@ export default function PressMedia() {
             <p className="text-[14px] font-[Outfit] font-[300] text-[#6b4226] leading-relaxed mb-5">
               For press trips, interviews, photography access, or media partnerships, please contact our communications team.
             </p>
-            <div className="space-y-3 text-[13px] font-[Outfit]">
-              <div><p className="text-[#8b7355] text-[11px] uppercase tracking-wide mb-0.5">Media Contact</p><p className="text-[#2a1a0e]">media@safarico.ke</p></div>
-              <div><p className="text-[#8b7355] text-[11px] uppercase tracking-wide mb-0.5">Telephone</p><p className="text-[#2a1a0e]">+254 700 000 000</p></div>
-            </div>
+           <div>
+  <p className="text-[#8b7355] text-[11px] uppercase tracking-wide mb-0.5">Telephone</p>
+  <p className="text-[#2a1a0e]">+254 728 515 826</p>
+</div>
             <div className="mt-6 pt-5 border-t border-[#d4c9b4]">
               <p className="text-[10px] tracking-[0.2em] uppercase text-[#8b7355] font-[Outfit] font-[600] mb-3">High-Res Assets</p>
               <p className="text-[12px] font-[Outfit] font-[300] text-[#6b4226] mb-4">Photography and brand assets available on request for editorial use.</p>
-              <a href="mailto:media@safarico.ke" className="block w-full text-center text-[13px] font-[Outfit] font-[500] bg-[#a0522d] text-[#f5f0e8] px-5 py-2.5 rounded hover:bg-[#8b4020] transition-colors">
+              <a href="mailto:info@kenyasavannah.com" className="block w-full text-center text-[13px] font-[Outfit] font-[500] bg-[#a0522d] text-[#f5f0e8] px-5 py-2.5 rounded hover:bg-[#8b4020] transition-colors">
                 Request Assets
               </a>
             </div>
