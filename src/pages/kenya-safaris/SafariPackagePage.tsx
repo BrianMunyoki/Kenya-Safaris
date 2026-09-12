@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router'
 import PageHero from '../../components/PageHero'
 
@@ -20,6 +21,76 @@ interface PackageData {
   relatedLinks: { label: string; to: string }[]
 }
 
+interface ApiSafariPackage {
+  id: number
+  title: string
+  slug: string
+  subtitle: string
+  tag: string
+  image: string
+  image_alt: string
+  duration: string
+  price_label: string
+  group_size: string
+  difficulty: string
+  overview: string
+  highlights: string[]
+  itinerary: { day: string; title: string; desc: string }[]
+  includes: string[]
+  excludes: string[]
+  related_links: { label: string; to: string }[]
+}
+
+const API_BASE_URL =
+  import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'
+
+function mapApiPackage(
+  api: ApiSafariPackage,
+  fallback: PackageData
+): PackageData {
+  return {
+    title: api.title || fallback.title,
+    subtitle: api.subtitle || fallback.subtitle,
+    tag: api.tag || fallback.tag,
+
+    img: api.image || fallback.img,
+    alt: api.image_alt || fallback.alt,
+
+    breadcrumbs: fallback.breadcrumbs,
+
+    duration: api.duration || fallback.duration,
+    price: api.price_label || fallback.price,
+    groupSize: api.group_size || fallback.groupSize,
+    difficulty: api.difficulty || fallback.difficulty,
+
+    overview: api.overview || fallback.overview,
+
+    highlights:
+      api.highlights.length > 0
+        ? api.highlights
+        : fallback.highlights,
+
+    itinerary:
+      api.itinerary.length > 0
+        ? api.itinerary
+        : fallback.itinerary,
+
+    includes:
+      api.includes.length > 0
+        ? api.includes
+        : fallback.includes,
+
+    excludes:
+      api.excludes.length > 0
+        ? api.excludes
+        : fallback.excludes,
+
+    relatedLinks:
+      api.related_links.length > 0
+        ? api.related_links
+        : fallback.relatedLinks,
+  }
+}
 const PACKAGES: Record<string, PackageData> = {
   'masai-mara-2day': {
     title: '2-Day Masai Mara Safari', tag: 'Masai Mara', subtitle: 'A compact introduction to Africa\'s most celebrated wildlife reserve — two game drives, one unforgettable night in the bush.',
@@ -250,7 +321,50 @@ function genericPackage(pkg: string): PackageData {
 interface Props { pkg: string }
 
 export default function SafariPackagePage({ pkg }: Props) {
-  const data = PACKAGES[pkg] ?? genericPackage(pkg)
+  const [data, setData] = useState<PackageData>(
+    () => PACKAGES[pkg] ?? genericPackage(pkg)
+  )
+
+  useEffect(() => {
+    const fallback = PACKAGES[pkg] ?? genericPackage(pkg)
+
+    setData(fallback)
+
+    const controller = new AbortController()
+
+    async function loadPackage() {
+      try {
+        const response = await fetch(
+          `${API_BASE_URL}/api/catalog/packages/${pkg}/`,
+          { signal: controller.signal }
+        )
+
+        if (response.status === 404) {
+          return
+        }
+
+        if (!response.ok) {
+          throw new Error(
+            `API request failed with status ${response.status}`
+          )
+        }
+
+        const apiPackage: ApiSafariPackage = await response.json()
+
+        setData(mapApiPackage(apiPackage, fallback))
+      } catch (error) {
+        if ((error as Error).name !== 'AbortError') {
+          console.error('Could not load safari package:', error)
+        }
+      }
+    }
+
+    loadPackage()
+
+    return () => {
+      controller.abort()
+    }
+  }, [pkg])
   return (
     <div>
       <PageHero title={data.title} subtitle={data.subtitle} img={data.img} alt={data.alt} breadcrumbs={data.breadcrumbs} tag={data.tag} height="sm" />
