@@ -15,10 +15,16 @@ interface PackageData {
   difficulty?: string
   highlights: string[]
   overview: string
+  seoTitle?: string
+  metaDescription?: string
   itinerary: { day: string; title: string; desc: string }[]
   includes: string[]
   excludes: string[]
   relatedLinks: { label: string; to: string }[]
+  faqs?: {
+    question: string
+    answer: string
+  }[]
 }
 
 interface ApiSafariPackage {
@@ -34,11 +40,19 @@ interface ApiSafariPackage {
   group_size: string
   difficulty: string
   overview: string
+  seo_title: string
+  meta_description: string
   highlights: string[]
   itinerary: { day: string; title: string; desc: string }[]
   includes: string[]
   excludes: string[]
   related_links: { label: string; to: string }[]
+  faqs: {
+    id: number
+    question: string
+    answer: string
+    order: number
+  }[]
 }
 
 const API_BASE_URL =
@@ -64,6 +78,8 @@ function mapApiPackage(
     difficulty: api.difficulty || fallback.difficulty,
 
     overview: api.overview || fallback.overview,
+    seoTitle: api.seo_title || fallback.seoTitle,
+    metaDescription: api.meta_description || fallback.metaDescription,
 
     highlights:
       api.highlights.length > 0
@@ -89,6 +105,8 @@ function mapApiPackage(
       api.related_links.length > 0
         ? api.related_links
         : fallback.relatedLinks,
+
+    faqs: api.faqs ?? fallback.faqs ?? [],
   }
 }
 const PACKAGES: Record<string, PackageData> = {
@@ -365,6 +383,26 @@ export default function SafariPackagePage({ pkg }: Props) {
       controller.abort()
     }
   }, [pkg])
+  useEffect(() => {
+    document.title = data.seoTitle || data.title
+  }, [data.seoTitle, data.title])
+  useEffect(() => {
+    const description =
+      data.metaDescription || data.subtitle
+
+  let metaDescription =
+    document.querySelector<HTMLMetaElement>(
+      'meta[name="description"]'
+    )
+
+  if (!metaDescription) {
+    metaDescription = document.createElement('meta')
+    metaDescription.name = 'description'
+    document.head.appendChild(metaDescription)
+  }
+
+  metaDescription.content = description
+}, [data.metaDescription, data.subtitle])
   return (
     <div>
       <PageHero title={data.title} subtitle={data.subtitle} img={data.img} alt={data.alt} breadcrumbs={data.breadcrumbs} tag={data.tag} height="sm" />
